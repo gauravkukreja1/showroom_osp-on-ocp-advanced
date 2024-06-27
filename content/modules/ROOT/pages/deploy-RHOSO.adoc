@@ -1,6 +1,6 @@
-== Preparing RHOCP for RHOSP Network Isolation
+= Install RHOSO 18 control plane and dataplane
 
-== Using ArgoCD application to install configure networking
+== Using ArgoCD application to install RHOSO deployment
 
 Create an argocd application manifest to deploy all the prerequisites for the RHOSO control plane installation:
 
@@ -10,14 +10,14 @@ cat << EOF | oc apply -f -
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: network-configuration
+  name: openstack-installation
   namespace: openshift-gitops
 spec:
   project: default
   source:
     repoURL: 'https://github.com/pnavarro/showroom_osp-on-ocp-advanced.git'
     targetRevision: HEAD
-    path: content/files/manifests/network-configuration
+    path: content/files/manifests/openstack-operators-installation
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: default
