@@ -1,0 +1,15 @@
+apiVersion: operators.coreos.com/v1alpha1
+kind: CatalogSource
+metadata:
+  name: openstack-operator-index
+  namespace: openstack-operators
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
+spec:
+  sourceType: grpc
+  secrets:
+    - "osp-operators-secret"
+  gprcPodConfig:
+    securityContextConfig: legacy
+  # adjust the repolink below to match your environment:
+  image: quay.io/redhat_emp1/pnavarro-beta-openstack-operator-index:latest
