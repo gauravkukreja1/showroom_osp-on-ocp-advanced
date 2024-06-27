@@ -1,0 +1,9 @@
+apiVersion: dataplane.openstack.org/v1beta1
+kind: OpenStackDataPlaneDeployment
+metadata:
+  name: openstack-edpm-ipam
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
+spec:
+  nodeSets:
+    - openstack-edpm-ipam

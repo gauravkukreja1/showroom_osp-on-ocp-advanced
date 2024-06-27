@@ -1,4 +1,4 @@
-= Install pre-requisites operators
+= Install pre-requisites
 
 == Using ArgoCD application to install RHOSO pre-requisites
 

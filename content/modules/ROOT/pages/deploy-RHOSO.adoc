@@ -1,5 +1,167 @@
 = Install RHOSO 18 control plane and dataplane
 
+== Create an NFS share for cinder
+
+[source,bash,role=execute]
+----
+mkdir /nfs/cinder
+chmod 777 /nfs/cinder
+----
+
+== Create VM for Dataplane
+
+Log out from the bastion so that we go back to the hypervisor machine:
+
+[source,bash,role=execute]
+----
+logout
+----
+
+.Sample Output
+----
+[lab-user@hypervisor ~]#
+----
+
+Create the *RHEL compute* on lab-user (*hypervisor*) server:
+
+[source,bash,role=execute]
+----
+sudo -i
+cd /var/lib/libvirt/images
+cp rhel-9.3-x86_64-kvm.qcow2 rhel9-guest.qcow2
+qemu-img info rhel9-guest.qcow2
+qemu-img resize rhel9-guest.qcow2 +90G
+chown -R qemu:qemu rhel9-*.qcow2
+virt-customize -a rhel9-guest.qcow2 --run-command 'growpart /dev/sda 4'
+virt-customize -a rhel9-guest.qcow2 --run-command 'xfs_growfs /'
+virt-customize -a rhel9-guest.qcow2 --root-password password:redhat
+virt-customize -a rhel9-guest.qcow2 --run-command 'systemctl disable cloud-init'
+virt-customize -a /var/lib/libvirt/images/rhel9-guest.qcow2 --ssh-inject root:file:/root/.ssh/id_rsa.pub
+virt-customize -a /var/lib/libvirt/images/rhel9-guest.qcow2 --selinux-relabel
+qemu-img create -f qcow2 -F qcow2 -b /var/lib/libvirt/images/rhel9-guest.qcow2 /var/lib/libvirt/images/osp-compute-0.qcow2
+virt-install --virt-type kvm --ram 16384 --vcpus 4 --cpu=host-passthrough --os-variant rhel8.4 --disk path=/var/lib/libvirt/images/osp-compute-0.qcow2,device=disk,bus=virtio,format=qcow2 --network network:ocp4-provisioning --network network:ocp4-net --boot hd,network --noautoconsole --vnc --name osp-compute0 --noreboot
+virsh start osp-compute0
+----
+
+=== Login to the Compute and Verify
+
+Verify IP from 192.168.123.0/24
+
+[source,bash,role=execute]
+----
+watch virsh domifaddr osp-compute0 --source agent
+----
+
+.Sample Output
+[source,bash]
+----
+Every 2.0s: virsh domifaddr osp-compute0 --source agent                                                                                                 hypervisor: Wed Apr 17 07:03:13 2024
+
+ Name       MAC address          Protocol     Address
+-------------------------------------------------------------------------------
+ lo         00:00:00:00:00:00    ipv4         127.0.0.1/8
+ -          -                    ipv6         ::1/128
+ eth0       52:54:00:c0:0a:26    ipv4         172.22.0.202/24
+ -          -                    ipv6         fe80::16:d083:92f4:f201/64
+ eth1       52:54:00:e5:ce:09    ipv4         192.168.123.61/24
+ -          -                    ipv6         fe80::bfc0:e5db:a655:729f/64
+----
+
+(CTRL + C to continue)
+
+[source,bash,role=execute]
+----
+virsh domifaddr osp-compute0 --source agent
+----
+
+Use the IP assigned to `eth1` above in the next step.
+
+=== Configure Ethernet Devices on New Compute
+
+SSH to the new VM.
+There is no password.
+
+[source,bash,role=execute]
+----
+ssh root@192.168.123.61
+----
+
+[source,bash,role=execute]
+----
+nmcli co delete 'Wired connection 1'
+nmcli con add con-name "static-eth0" ifname eth0 type ethernet ip4 172.22.0.100/24 ipv4.dns "172.22.0.89"
+nmcli con up "static-eth0"
+nmcli co delete 'Wired connection 2'
+nmcli con add con-name "static-eth1" ifname eth1 type ethernet ip4 192.168.123.61/24 ipv4.dns "192.168.123.100" ipv4.gateway "192.168.123.1"
+nmcli con up "static-eth1"
+----
+
+And log off VM
+
+[source,bash,role=execute]
+----
+logout
+----
+
+=== Set up Compute Server
+
+Log into the compute server
+
+[source,bash,role=execute]
+----
+ssh root@172.22.0.100
+----
+
+Set hostname
+
+[source,bash,role=execute]
+----
+sudo hostnamectl set-hostname edpm-compute-0.aio.example.com
+----
+
+Subscribe to the RHEL 9.3 Repos with Validated Account
+
+[source,bash,role=execute]
+----
+curl -ko /etc/pki/ca-trust/source/anchors/demosat-ha.infra.demo.redhat.com.ca.crt  "https://demosat-ha.infra.demo.redhat.com/pub/katello-server-ca.crt"
+update-ca-trust
+yum install -y "https://demosat-ha.infra.demo.redhat.com/pub/katello-ca-consumer-latest.noarch.rpm"
+subscription-manager register --org="Red_Hat_RHDP_Labs"  --activationkey="demosat-smt-b1374-1711111157" --serverurl=https://demosat-ha.infra.demo.redhat.com:8443/rhsm --baseurl=https://demosat-ha.infra.demo.redhat.com/pulp/repos
+
+sudo subscription-manager repos --disable=*
+subscription-manager repos --enable=rhceph-6-tools-for-rhel-9-x86_64-rpms --enable=rhel-9-for-x86_64-baseos-rpms --enable=rhel-9-for-x86_64-appstream-rpms --enable=rhel-9-for-x86_64-highavailability-rpms --enable=openstack-dev-preview-for-rhel-9-x86_64-rpms --enable=fast-datapath-for-rhel-9-x86_64-rpms
+----
+
+Install podman on the compute and login to registries
+
+[source,bash,role=execute]
+----
+sudo dnf install -y podman
+----
+
+Log off the Compute Server
+
+[source,bash,role=execute]
+----
+logout
+----
+
+Snapshot the Compute Server
+
+[source,bash,role=execute]
+----
+virsh snapshot-create-as osp-compute0 preprovisioned
+----
+
+Connect to the *bastion* server:
+
+[source,bash,role=execute]
+----
+sudo -i
+ssh root@192.168.123.100
+----
+
+
 == Using ArgoCD application to install RHOSO deployment
 
 Create an argocd application manifest to deploy all the prerequisites for the RHOSO control plane installation:
@@ -10,14 +172,14 @@ cat << EOF | oc apply -f -
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: openstack-installation
+  name: openstack-deployment
   namespace: openshift-gitops
 spec:
   project: default
   source:
     repoURL: 'https://github.com/pnavarro/showroom_osp-on-ocp-advanced.git'
     targetRevision: HEAD
-    path: content/files/manifests/openstack-operators-installation
+    path: content/files/manifests/openstack-deployment
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: default
