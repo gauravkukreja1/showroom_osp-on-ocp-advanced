@@ -168,13 +168,13 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: operator-installation
-  namespace: argocd
+  namespace: openshift-gitops
 spec:
   project: default
   source:
     repoURL: 'https://github.com/pnavarro/showroom_osp-on-ocp-advanced.git'
     targetRevision: HEAD
-    path: content/files/manifests
+    path: content/files/manifests/pre-reqs-operators
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: default
