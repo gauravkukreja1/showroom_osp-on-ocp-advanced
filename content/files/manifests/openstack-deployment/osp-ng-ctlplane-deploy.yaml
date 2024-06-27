@@ -102,7 +102,7 @@ spec:
       customServiceConfigSecrets:
       - glance-cinder-config
       databaseInstance: openstack
-      storageClass: "nfs"
+      storageClass: "ocs-storagecluster-ceph-rbd"
       storageRequest: 10G
       secret: osp-secret
       keystoneEndpoint: default
