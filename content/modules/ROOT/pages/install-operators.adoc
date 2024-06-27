@@ -10,14 +10,14 @@ cat << EOF | oc apply -f -
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: pre-requisites-operators-installation
+  name: openstack-operators-installation
   namespace: openshift-gitops
 spec:
   project: default
   source:
     repoURL: 'https://github.com/pnavarro/showroom_osp-on-ocp-advanced.git'
     targetRevision: HEAD
-    path: content/files/manifests/openstack-operators
+    path: content/files/manifests/openstack-operators-installation
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: default
