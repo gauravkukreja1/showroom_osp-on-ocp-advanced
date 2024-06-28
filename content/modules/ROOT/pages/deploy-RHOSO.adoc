@@ -161,6 +161,37 @@ sudo -i
 ssh root@192.168.123.100
 ----
 
+Set SSH key
+
+[source,bash,role=execute]
+----
+sudo -i
+scp /root/.ssh/id_rsa root@192.168.123.100:/root/.ssh/id_rsa_compute
+scp /root/.ssh/id_rsa.pub root@192.168.123.100:/root/.ssh/id_rsa_compute.pub
+----
+
+WARNING: This might error initially because of unknown hosts file.
+Retry to make sure both files are copied.
+
+Connect to the *bastion* server:
+
+[source,bash,role=execute]
+----
+sudo -i
+ssh root@192.168.123.100
+----
+
+.Sample Output
+----
+[root@ocp4-bastion ~] #
+----
+
+Create Secret
+
+[source,bash,role=execute]
+----
+oc create secret generic dataplane-ansible-ssh-private-key-secret --save-config --dry-run=client --from-file=authorized_keys=/root/.ssh/id_rsa_compute.pub --from-file=ssh-privatekey=/root/.ssh/id_rsa_compute --from-file=ssh-publickey=/root/.ssh/id_rsa_compute.pub -n openstack -o yaml | oc apply -f-
+----
 
 == Using OpenShift Gitops application to install RHOSO control plane
 
