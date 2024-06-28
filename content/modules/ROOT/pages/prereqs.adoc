@@ -48,3 +48,32 @@ echo $argoURL
 ----
 
 You should see that the pre-requisites-operators-installation is completed
+
+Create a single instance of a *metallb* resource:
+
+[source,bash,role=execute]
+----
+cat << EOF | oc apply -f -
+apiVersion: metallb.io/v1beta1
+kind: MetalLB
+metadata:
+  name: metallb
+  namespace: metallb-system
+spec:
+  nodeSelector:
+    node-role.kubernetes.io/worker: ""
+EOF
+----
+
+Create instance of the *nmstate* operator:
+
+[source,bash,role=execute]
+----
+cat << EOF | oc apply -f -
+apiVersion: nmstate.io/v1
+kind: NMState
+metadata:
+  name: nmstate
+EOF
+----
+

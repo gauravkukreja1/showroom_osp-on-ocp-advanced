@@ -41,7 +41,7 @@ spec:
                 annotations:
                   metallb.universe.tf/address-pool: internalapi
                   metallb.universe.tf/allow-shared-ip: internalapi
-                  metallb.universe.tf/loadBalancerIPs: 172.17.0.80
+                  metallb.universe.tf/loadBalancerIPs: 172.17.0.89
               spec:
                 type: LoadBalancer
       cinderScheduler:
@@ -79,7 +79,7 @@ spec:
                 annotations:
                   metallb.universe.tf/address-pool: internalapi
                   metallb.universe.tf/allow-shared-ip: internalapi
-                  metallb.universe.tf/loadBalancerIPs: 172.17.0.80
+                  metallb.universe.tf/loadBalancerIPs: 172.17.0.89
               spec:
                 type: LoadBalancer
       barbicanWorker:
@@ -118,7 +118,7 @@ spec:
                   annotations:
                     metallb.universe.tf/address-pool: internalapi
                     metallb.universe.tf/allow-shared-ip: internalapi
-                    metallb.universe.tf/loadBalancerIPs: 172.17.0.80
+                    metallb.universe.tf/loadBalancerIPs: 172.17.0.89
                 spec:
                   type: LoadBalancer
           networkAttachments:
@@ -134,7 +134,7 @@ spec:
               annotations:
                 metallb.universe.tf/address-pool: internalapi
                 metallb.universe.tf/allow-shared-ip: internalapi
-                metallb.universe.tf/loadBalancerIPs: 172.17.0.80
+                metallb.universe.tf/loadBalancerIPs: 172.17.0.89
             spec:
               type: LoadBalancer
       databaseInstance: openstack
@@ -160,7 +160,7 @@ spec:
               annotations:
                 metallb.universe.tf/address-pool: internalapi
                 metallb.universe.tf/allow-shared-ip: internalapi
-                metallb.universe.tf/loadBalancerIPs: 172.17.0.80
+                metallb.universe.tf/loadBalancerIPs: 172.17.0.89
             spec:
               type: LoadBalancer
       databaseInstance: openstack
@@ -185,7 +185,7 @@ spec:
                 annotations:
                   metallb.universe.tf/address-pool: internalapi
                   metallb.universe.tf/allow-shared-ip: internalapi
-                  metallb.universe.tf/loadBalancerIPs: 172.17.0.80
+                  metallb.universe.tf/loadBalancerIPs: 172.17.0.89
               spec:
                 type: LoadBalancer
       metadataServiceTemplate:
@@ -195,7 +195,7 @@ spec:
               annotations:
                 metallb.universe.tf/address-pool: internalapi
                 metallb.universe.tf/allow-shared-ip: internalapi
-                metallb.universe.tf/loadBalancerIPs: 172.17.0.80
+                metallb.universe.tf/loadBalancerIPs: 172.17.0.89
             spec:
               type: LoadBalancer
       secret: osp-secret
@@ -215,7 +215,7 @@ spec:
                 annotations:
                   metallb.universe.tf/address-pool: internalapi
                   metallb.universe.tf/allow-shared-ip: internalapi
-                  metallb.universe.tf/loadBalancerIPs: 172.17.0.80
+                  metallb.universe.tf/loadBalancerIPs: 172.17.0.89
               spec:
                 type: LoadBalancer
       manilaScheduler:
@@ -249,7 +249,7 @@ spec:
               annotations:
                 metallb.universe.tf/address-pool: internalapi
                 metallb.universe.tf/allow-shared-ip: internalapi
-                metallb.universe.tf/loadBalancerIPs: 172.17.0.80
+                metallb.universe.tf/loadBalancerIPs: 172.17.0.89
             spec:
               type: LoadBalancer
       databaseInstance: openstack
@@ -290,7 +290,7 @@ spec:
                 annotations:
                   metallb.universe.tf/address-pool: internalapi
                   metallb.universe.tf/allow-shared-ip: internalapi
-                  metallb.universe.tf/loadBalancerIPs: 172.17.0.80
+                  metallb.universe.tf/loadBalancerIPs: 172.17.0.89
               spec:
                 type: LoadBalancer
         replicas: 1
@@ -302,7 +302,7 @@ spec:
                 annotations:
                   metallb.universe.tf/address-pool: internalapi
                   metallb.universe.tf/allow-shared-ip: internalapi
-                  metallb.universe.tf/loadBalancerIPs: 172.17.0.80
+                  metallb.universe.tf/loadBalancerIPs: 172.17.0.89
               spec:
                 type: LoadBalancer
         replicas: 1
@@ -348,7 +348,7 @@ spec:
       logging:
         enabled: false
         network: internalapi
-        ipaddr: 172.17.0.80
+        ipaddr: 172.17.0.89
         port: 10514
         cloNamespace: openshift-logging
   swift:
@@ -371,7 +371,7 @@ spec:
                 annotations:
                   metallb.universe.tf/address-pool: internalapi
                   metallb.universe.tf/allow-shared-ip: internalapi
-                  metallb.universe.tf/loadBalancerIPs: 172.17.0.80
+                  metallb.universe.tf/loadBalancerIPs: 172.17.0.89
               spec:
                 type: LoadBalancer
         networkAttachments:
@@ -398,7 +398,7 @@ spec:
                 annotations:
                   metallb.universe.tf/address-pool: internalapi
                   metallb.universe.tf/allow-shared-ip: internalapi
-                  metallb.universe.tf/loadBalancerIPs: 172.17.0.80
+                  metallb.universe.tf/loadBalancerIPs: 172.17.0.89
               spec:
                 type: LoadBalancer
       designateCentral:
