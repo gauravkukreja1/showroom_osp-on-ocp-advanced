@@ -29,4 +29,4 @@ spec:
     - CreateNamespace=true
 EOF
 ----
-Access the Argo CD console to check the deployment of the RHOSO operators
+Access the OpenShift Gitops console to check the deployment of the RHOSO operators

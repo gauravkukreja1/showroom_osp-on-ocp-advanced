@@ -30,7 +30,7 @@ spec:
 EOF
 ----
 
-Access the Argo CD console by logging in with the username admin and the password:
+Access the OpenShift Gitops console by logging in with the username admin and the password:
 
 Extract the password from the admin user Secret:
 
@@ -40,7 +40,7 @@ argoPass=$(oc get secret/openshift-gitops-cluster -n openshift-gitops -o jsonpat
 echo $argoPass
 ----
 
-Get the Route for the Argo CD/OpenShift GitOps server:
+Get the Route for the OpenShift Gitops/OpenShift GitOps server:
 [source,bash,role=execute]
 ----
 argoURL=$(oc get route openshift-gitops-server -n openshift-gitops -o jsonpath='{.spec.host}{"\n"}')

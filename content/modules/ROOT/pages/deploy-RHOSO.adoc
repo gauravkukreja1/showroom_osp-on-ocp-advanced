@@ -162,7 +162,7 @@ ssh root@192.168.123.100
 ----
 
 
-== Using ArgoCD application to install RHOSO deployment
+== Using OpenShift Gitops application to install RHOSO control plane
 
 Create an argocd application manifest to deploy all the prerequisites for the RHOSO control plane installation:
 
@@ -172,14 +172,14 @@ cat << EOF | oc apply -f -
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: openstack-deployment
+  name: openstack-deployment-control-plane
   namespace: openshift-gitops
 spec:
   project: default
   source:
     repoURL: 'https://github.com/pnavarro/showroom_osp-on-ocp-advanced.git'
     targetRevision: HEAD
-    path: content/files/manifests/openstack-deployment
+    path: content/files/manifests/openstack-control-plane-deployment
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: default
@@ -191,4 +191,35 @@ spec:
     - CreateNamespace=true
 EOF
 ----
-Access the Argo CD console to check the deployment of the RHOSO operators
+Access the OpenShift Gitops console to check the deployment of the RHOSO operators
+
+== Using OpenShift Gitops application to install RHOSO data plane
+
+Create an argocd application manifest to deploy all the prerequisites for the RHOSO data plane installation:
+
+[source,bash,role=execute]
+----
+cat << EOF | oc apply -f -
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: openstack-deployment-data-plane
+  namespace: openshift-gitops
+spec:
+  project: default
+  source:
+    repoURL: 'https://github.com/pnavarro/showroom_osp-on-ocp-advanced.git'
+    targetRevision: HEAD
+    path: content/files/manifests/openstack-data-plane-deployment
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: false
+    syncOptions:
+    - CreateNamespace=true
+EOF
+----
+Access the OpenShift Gitops console to check the deployment of the RHOSO operators
