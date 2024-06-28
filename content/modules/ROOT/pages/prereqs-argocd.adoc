@@ -124,11 +124,11 @@ EOF
 ----
 
 Confirm that argocd operator is running.
-Repeat this command until you see the desired output:
+Execute the following command until you see the Phase Field is succeeded (Press Control+C to exit the command):
 
 [source,bash,role=execute]
 ----
-oc get clusterserviceversion -n openshift-gitops-operator  -o custom-columns=Name:.metadata.name,Phase:.status.phase
+oc get clusterserviceversion -n openshift-gitops-operator  -o custom-columns=Name:.metadata.name,Phase:.status.phase -w
 ----
 
 Give the ServiceAccount for ArgoCD the ability to manage the cluster:
