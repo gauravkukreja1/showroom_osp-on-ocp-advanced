@@ -37,11 +37,11 @@ Check the network back end used by your cluster:
 
 [source,bash,role=execute]
 ----
-$ oc get network.operator cluster --output=jsonpath='{.spec.defaultNetwork.type}'
+oc get network.operator cluster --output=jsonpath='{.spec.defaultNetwork.type}'
 ----
 If the back end is OVNKubernetes, then run the following command to enable global IP forwarding:
 
 [source,bash,role=execute]
 ----
-$ oc patch network.operator cluster -p '{"spec":{"defaultNetwork":{"ovnKubernetesConfig":{"gatewayConfig":{"ipForwarding": "Global"}}}}}' --type=merge
+oc patch network.operator cluster -p '{"spec":{"defaultNetwork":{"ovnKubernetesConfig":{"gatewayConfig":{"ipForwarding": "Global"}}}}}' --type=merge
 ----

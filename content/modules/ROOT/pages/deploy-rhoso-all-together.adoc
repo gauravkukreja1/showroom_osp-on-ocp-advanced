@@ -28,7 +28,7 @@ Create the *RHEL compute* on lab-user (*hypervisor*) server:
 ----
 sudo -i
 cd /var/lib/libvirt/images
-cp rhel-9.3-x86_64-kvm.qcow2 rhel9-guest.qcow2
+cp rhel-9.4-x86_64-kvm.qcow2 rhel9-guest.qcow2
 qemu-img info rhel9-guest.qcow2
 qemu-img resize rhel9-guest.qcow2 +90G
 chown -R qemu:qemu rhel9-*.qcow2

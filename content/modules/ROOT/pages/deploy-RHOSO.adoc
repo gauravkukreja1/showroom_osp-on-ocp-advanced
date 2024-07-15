@@ -2,6 +2,8 @@
 
 == Create an NFS share for cinder
 
+In the bastion host:
+
 [source,bash,role=execute]
 ----
 mkdir /nfs/cinder
@@ -10,25 +12,20 @@ chmod 777 /nfs/cinder
 
 == Create VM for Dataplane
 
-Log out from the bastion so that we go back to the hypervisor machine:
+In the hypervisor host:
 
+Escalate to root:
 [source,bash,role=execute]
 ----
-logout
-----
-
-.Sample Output
-----
-[lab-user@hypervisor ~]#
+sudo -i
 ----
 
 Create the *RHEL compute* on lab-user (*hypervisor*) server:
 
 [source,bash,role=execute]
 ----
-sudo -i
 cd /var/lib/libvirt/images
-cp rhel-9.3-x86_64-kvm.qcow2 rhel9-guest.qcow2
+cp rhel-9.4-x86_64-kvm.qcow2 rhel9-guest.qcow2
 qemu-img info rhel9-guest.qcow2
 qemu-img resize rhel9-guest.qcow2 +90G
 chown -R qemu:qemu rhel9-*.qcow2
@@ -41,6 +38,7 @@ virt-customize -a /var/lib/libvirt/images/rhel9-guest.qcow2 --selinux-relabel
 qemu-img create -f qcow2 -F qcow2 -b /var/lib/libvirt/images/rhel9-guest.qcow2 /var/lib/libvirt/images/osp-compute-0.qcow2
 virt-install --virt-type kvm --ram 16384 --vcpus 4 --cpu=host-passthrough --os-variant rhel8.4 --disk path=/var/lib/libvirt/images/osp-compute-0.qcow2,device=disk,bus=virtio,format=qcow2 --network network:ocp4-provisioning --network network:ocp4-net --boot hd,network --noautoconsole --vnc --name osp-compute0 --noreboot
 virsh start osp-compute0
+
 ----
 
 === Login to the Compute and Verify
@@ -132,33 +130,11 @@ sudo subscription-manager repos --disable=*
 subscription-manager repos --enable=rhceph-6-tools-for-rhel-9-x86_64-rpms --enable=rhel-9-for-x86_64-baseos-rpms --enable=rhel-9-for-x86_64-appstream-rpms --enable=rhel-9-for-x86_64-highavailability-rpms --enable=openstack-dev-preview-for-rhel-9-x86_64-rpms --enable=fast-datapath-for-rhel-9-x86_64-rpms
 ----
 
-Install podman on the compute and login to registries
-
-[source,bash,role=execute]
-----
-sudo dnf install -y podman
-----
-
-Log off the Compute Server
-
-[source,bash,role=execute]
-----
-logout
-----
-
 Snapshot the Compute Server
 
 [source,bash,role=execute]
 ----
 virsh snapshot-create-as osp-compute0 preprovisioned
-----
-
-Connect to the *bastion* server:
-
-[source,bash,role=execute]
-----
-sudo -i
-ssh root@192.168.123.100
 ----
 
 Set SSH key
