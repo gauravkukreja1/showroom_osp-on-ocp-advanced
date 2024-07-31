@@ -31,19 +31,19 @@ EOF
 ----
 Access the OpenShift Gitops console to check the deployment of the RHOSO operators
 
-image::6_deploy_rhoso_dataplane.png[Deployed RHOSO Dataplane,55%,55%]
+image::6_deploy_rhoso_dataplane.png[Deployed RHOSO Dataplane]
 
 Click on the *openstack-deployment-data-plane* Gitops application to access to the dataplane deployment:
 
-image::7_inspect_jobs_data_plane.png[Deployed RHOSO Dataplane,55%,55%]
+image::7_inspect_jobs_data_plane.png[Deployed RHOSO Dataplane]
 
 Click on the *bootstrap-openstack-edpm-ipam-openstack-edpm-ipam* job to access to the logs of the deployment:
 
-image::8_details_job.png[Deployed RHOSO Dataplane,55%,55%]
+image::8_details_job.png[Deployed RHOSO Dataplane]
 
 Follow the progress of all the logs until finished as in the image
 
-image::9_all_jobs_finished.png[Deployed RHOSO Dataplane,55%,55%]
+image::9_all_jobs_finished.png[Deployed RHOSO Dataplane]
 
 You use the *OpenStackDataPlaneDeployment* CRD to configure the services on the data plane nodes and deploy the data plane. Verify that the data plane is deployed.
 

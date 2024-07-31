@@ -45,7 +45,7 @@ EOF
 ----
 Access the OpenShift Gitops console to check the deployment of the RHOSO operators
 
-image::3_openstack_operators_installation.png[OpenStack Operators Installation,55%,55%]
+image::3_openstack_operators_installation.png[OpenStack Operators Installation]
 
 . Review the pods in the **openstack-operators** namespace:
 +

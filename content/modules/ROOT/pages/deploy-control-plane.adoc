@@ -200,7 +200,7 @@ EOF
 ----
 Access the OpenShift Gitops console to check the deployment of the RHOSO operators
 
-image::5_deploy_rhoso_control_plane.png[Deployed RHOSO control plane,55%,55%]
+image::5_deploy_rhoso_control_plane.png[Deployed RHOSO control plane]
 
 OpenStack control plane deployment is managed by *openstackcontrolplane* CR. 
 

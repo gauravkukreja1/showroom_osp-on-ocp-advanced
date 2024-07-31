@@ -2,7 +2,7 @@
 
 The following diagrams shows the network topology of the lab environment:
 
-image::network.png[networking,55%,55%]
+image::network.png[networking]
 
 == Using ArgoCD application to install configure networking
 
@@ -35,7 +35,7 @@ EOF
 ----
 Access the OpenShift Gitops console to check the deployment of the RHOSO operators.
 
-image::4_network_isolation.png[Networking Isolation,55%,55%]
+image::4_network_isolation.png[Networking Isolation]
 
 If your cluster is RHOCP 4.14 or later and it has OVNKubernetes as the network back end, then you must enable global forwarding so that MetalLB can work on a secondary network interface.
 

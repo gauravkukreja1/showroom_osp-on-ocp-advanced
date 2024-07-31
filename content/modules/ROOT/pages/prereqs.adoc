@@ -32,7 +32,7 @@ EOF
 
 Access the OpenShift Gitops console by logging in with the username admin and the password:
 
-image::2_pre_requisites_operators_installation.png[Prerequisites Operators Installation,55%,55%]
+image::2_pre_requisites_operators_installation.png[Prerequisites Operators Installation]
 
 Extract the password from the admin user Secret:
 
