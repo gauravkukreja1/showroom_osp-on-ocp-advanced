@@ -155,3 +155,5 @@ echo $argoURL
 ----
 
 Access the OpenShift Gitops console by logging in with the username admin and the password extracted in the previous step.
+
+image::1_argo_apps.png[Argocd Prerequisites,55%,55%]
