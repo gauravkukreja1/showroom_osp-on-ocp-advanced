@@ -32,8 +32,6 @@ EOF
 
 Access the OpenShift Gitops console by logging in with the username admin and the password:
 
-image::2_pre_requisites_operators_installation.png[Prerequisites Operators Installation]
-
 Extract the password from the admin user Secret:
 
 [source,bash,role=execute]
@@ -50,6 +48,8 @@ echo $argoURL
 ----
 
 You should see that the pre-requisites-operators-installation is completed
+
+image::2_pre_requisites_operators_installation.png[Prerequisites Operators Installation]
 
 Create a single instance of a *metallb* resource:
 
