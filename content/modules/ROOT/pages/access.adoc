@@ -19,15 +19,14 @@ openstack compute service list
 ----
 
 .Sample Output
-----
-+--------------------------------------+----------------+------------------------+----------+---------+-------+----------------------------+
-| ID                                   | Binary         | Host                   | Zone     | Status  | State | Updated At                 |
-+--------------------------------------+----------------+------------------------+----------+---------+-------+----------------------------+
-| 9d95d098-7666-4be8-8c70-230f474b625b | nova-conductor | nova-cell1-conductor-0 | internal | enabled | up    | 2024-04-17T18:58:07.000000 |
-| d283fd97-657c-422f-9572-be71c6a5b804 | nova-conductor | nova-cell0-conductor-0 | internal | enabled | up    | 2024-04-17T18:58:05.000000 |
-| 3abb8a21-1b8d-48f2-adfc-663d52344229 | nova-scheduler | nova-scheduler-0       | internal | enabled | up    | 2024-04-17T18:58:10.000000 |
-+--------------------------------------+----------------+------------------------+----------+---------+-------+----------------------------+
-----
++--------------------------------------+----------------+-----------------------------------------+----------+---------+-------+----------------------------+
+| ID                                   | Binary         | Host                                    | Zone     | Status  | State | Updated At                 |
++--------------------------------------+----------------+-----------------------------------------+----------+---------+-------+----------------------------+
+| e77205ee-a48e-4e25-9592-f57b05267489 | nova-conductor | nova-cell0-conductor-0                  | internal | enabled | up    | 2024-08-27T07:45:46.000000 |
+| d78052c7-08ee-4832-bfbd-b97509a239e3 | nova-scheduler | nova-scheduler-0                        | internal | enabled | up    | 2024-08-27T07:45:50.000000 |
+| d39b02a5-c879-46b3-83a5-2c6c906aaba8 | nova-conductor | nova-cell1-conductor-0                  | internal | enabled | up    | 2024-08-27T07:45:46.000000 |
+| d2590690-0403-4eb7-b82b-dbdd5c8a8783 | nova-compute   | edpm-compute-0.ctlplane.aio.example.com | nova     | enabled | up    | 2024-08-27T07:45:47.000000 |
++--------------------------------------+----------------+-----------------------------------------+----------+---------+-------+----------------------------+
 
 Verify OpenStack networks:
 
@@ -62,7 +61,7 @@ Connect to the openstackclient pod:
 ----
 oc rsh -n openstack openstackclient
 ----
-Create a VM
+Define network ranges, create flavors and create a test image:
 [source,bash,role=execute]
 ----
 export GATEWAY=192.168.123.1
@@ -76,11 +75,17 @@ curl -O -L https://github.com/cirros-dev/cirros/releases/download/0.6.2/cirros-0
 openstack image create cirros --container-format bare --disk-format qcow2 --public --file cirros-0.6.2-x86_64-disk.img
 ----
 
-Create Network and Security for the VM
+Generate a pair of SSH keys:
 
 [source,bash,role=execute]
 ----
 ssh-keygen -m PEM -t rsa -b 2048 -f ~/.ssh/id_rsa_pem
+----
+
+Create Network and Security for the VM
+
+[source,bash,role=execute]
+----
 openstack keypair create --public-key ~/.ssh/id_rsa_pem.pub default
 openstack security group create basic
 openstack security group rule create basic --protocol tcp --dst-port 22:22 --remote-ip 0.0.0.0/0

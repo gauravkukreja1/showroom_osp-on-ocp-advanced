@@ -96,7 +96,7 @@ A provisioner pod will be executed to pull out the edpm RHEL image and to provis
 
 [source,bash,role=execute]
 ----
-oc get pods -n openstack
+oc get pods -n openstack | grep scale-out
 ----
 
 .Sample Output
@@ -104,11 +104,7 @@ oc get pods -n openstack
 ----
 NAME                                                              READY   STATUS      RESTARTS   AGE
 [...]
-reboot-os-openstack-edpm-ipam-openstack-edpm-ipam-scqq9           0/1     Completed   0          111m
-run-os-openstack-edpm-ipam-openstack-edpm-ipam-zs4dk              0/1     Completed   0          111m
 scale-out-provisioned-provisionserver-openstackprovisionse2csnp   1/1     Running     0          2m18s
-ssh-known-hosts-openstack-edpm-ipam-67lt8                         0/1     Completed   0          111m
-validate-network-openstack-edpm-ipam-openstack-edpm-ipam-r22jq    0/1     Completed   0          112m
 [...]
 ----
 

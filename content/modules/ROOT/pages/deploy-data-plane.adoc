@@ -2,7 +2,7 @@
 
 == Using OpenShift Gitops application to install RHOSO data plane
 
-Create an argocd application manifest to deploy all the prerequisites for the RHOSO data plane installation:
+Create an argocd application manifest to deploy the RHOSO data plane:
 
 [source,bash,role=execute]
 ----

@@ -6,7 +6,7 @@ image::network.png[networking]
 
 == Using ArgoCD application to install configure networking
 
-Create an argocd application manifest to deploy all the prerequisites for the RHOSO control plane installation:
+Create an argocd application manifest to deploy the networking configuration:
 
 [source,bash,role=execute]
 ----
@@ -33,7 +33,7 @@ spec:
     - CreateNamespace=true
 EOF
 ----
-Access the OpenShift Gitops console to check the deployment of the RHOSO operators.
+Access the OpenShift Gitops console to check the deployment of the network configuration.
 
 image::4_network_isolation.png[Networking Isolation]
 

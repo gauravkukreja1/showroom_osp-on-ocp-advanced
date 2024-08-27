@@ -16,7 +16,7 @@ The basic architecture of a Red Hat OpenStack Services on OpenShift (RHOSO) envi
 + **Hosted RHOSO client**: RHOSO provides a host openstackclient pod that is preconfigured with administrator access to the deployed RHOSO environment.
 
 
-Create an argocd application manifest to deploy all the prerequisites for the RHOSO control plane installation:
+Create an argocd application manifest to deploy the prerequisites for the RHOSO control plane installation:
 
 [source,bash,role=execute]
 ----

@@ -171,7 +171,7 @@ oc create secret generic dataplane-ansible-ssh-private-key-secret --save-config 
 
 == Using OpenShift Gitops application to install RHOSO control plane
 
-Create an argocd application manifest to deploy all the prerequisites for the RHOSO control plane installation:
+Create an argocd application manifest to initiate the RHOSO control plane installation:
 
 [source,bash,role=execute]
 ----
