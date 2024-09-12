@@ -5,4 +5,3 @@
 * xref:deploy-control-plane.adoc[Deploy RHOSO control plane using OpenShift gitops]
 * xref:deploy-data-plane.adoc[Deploy RHOSO data plane using OpenShift gitops]
 * xref:access.adoc[Access OpenStack]
-* xref:scale-out.adoc[Scale Out your deployment using Cluster Baremetal Operator provisioned nodes]
