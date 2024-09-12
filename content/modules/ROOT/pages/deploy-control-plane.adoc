@@ -174,7 +174,7 @@ Use the following commands to view the OpenStackControlPlane CRD definition and 
 
 [source,bash,role=execute]
 ----
-oc describe crd openstackcontrolplane
+oc describe crd openstackcontrolplane | more
 
 oc explain openstackcontrolplane.spec
 ----
