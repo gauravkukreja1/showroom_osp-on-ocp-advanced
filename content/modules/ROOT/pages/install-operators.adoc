@@ -68,53 +68,29 @@ It should look like:
 ----
 (...)
 [root@ocp4-bastion ~]# oc get pods -n openstack-operators
-NAME                                                              READY   STATUS      RESTARTS   AGE
-0aa4542351b81c759f5d66d2a27bb21c6e8c6ad182d5e0bc5b26143d47cwqln   0/1     Completed   0          48m
-0c40fcce6a29f383cda66e9e9de41fdbe4494f3db489c33c0d8a452de0mrx5d   0/1     Completed   0          48m
-0cb7980427badb1a09887f737b6e7926293c96df07677613cd4a3e5a09hpcfj   0/1     Completed   0          48m
-0d5e8b8ece0e0a19b70bbacbe14ecf17e61d8dee28fc2f0f957129d790c6bdf   0/1     Completed   0          48m
-1d370dd1211d9f8cd7941e6027f281bf64a935395acf9fa989f2a4727e7tqt9   0/1     Completed   0          48m
-3f5d6b27b81f5083069a18b338ed754ff082fed8db5aa226f5085721a8v6szp   0/1     Completed   0          48m
-663e6d8ad4f196bf54db8672da19bb2f5c813658a2be92f0d49bffb614rvtqk   0/1     Completed   0          48m
-6bd41423d2e2562598f62eb8adeb83df97de37905b4bd9c16523bf0a07whrnv   0/1     Completed   0          48m
-71eb50d904d797d5aaac6402dcb8985b10f9ab63b8216f03c0e63e2b98ft2vg   0/1     Completed   0          48m
-7c94bb3b02ca9042c5f6e14c65952ef3c67cca033056c88c5e9b26384bgdcng   0/1     Completed   0          48m
-7c9fad0d480e0c828983facb45c31ed2e155e882cecd508872abb69cc75bgzr   0/1     Completed   0          48m
-83548d653efd60937228b24b616096095d1a95e6336917c9d47e67e9ba5qbpj   0/1     Completed   0          48m
-87b653f8f46ca35a737a68f84d38e68072ac4175bc92e03f3186710447d2dwb   0/1     Completed   0          48m
-b49dd4a931e45136a1939039b80f61c625439b182b80c8da49ceaac6962j84g   0/1     Completed   0          48m
-barbican-operator-controller-manager-68b4f87dc9-g7p49             2/2     Running     0          47m
-bb2c8487079b923caf36d46d512857bdad1766f5c1da648718aca2914a9mhs5   0/1     Completed   0          48m
-bf4a22f9f279a3cb9fbb8203b93fc5afef3c4139a7047cdfdefa76a9f6wfrr4   0/1     Completed   0          48m
-c72e9eaf2cbf7d5d56afeceee16eb0a22202dd1b57d8e17d13d3f315b0n4w95   0/1     Completed   0          48m
-cinder-operator-controller-manager-67697ccd75-7wwpg               2/2     Running     0          46m
-d99ee5e400f0504e500dab0c14e8a0c64ef081923513a2e1d36b0012bbtvfg8   0/1     Completed   0          48m
-dataplane-operator-controller-manager-7876cd486-frcx4             2/2     Running     0          46m
-ddb73e2f52e24b33c181cfd4e79d641b53fc4d05d25a1c4b2023fb29b6fhzfg   0/1     Completed   0          48m
-designate-operator-controller-manager-799b8f765b-wb4s2            2/2     Running     0          47m
-f6f52fde99b131818d1d7f0d389d5fea6e7e59bf76cf2cc7fe59979c5dl5zdr   0/1     Completed   0          48m
-fa70a9bfe037af640412c3d89f5c5a1c436e067203446c86880d43de9bhkkz7   0/1     Completed   0          48m
-fe9e1162edff42ab6306d5db9a347c5ba1210b0ad753db597a6cd18acc7chzq   0/1     Completed   0          48m
-glance-operator-controller-manager-768bc74496-f2blh               2/2     Running     0          47m
-heat-operator-controller-manager-5db4b66b87-8gjg9                 2/2     Running     0          47m
-horizon-operator-controller-manager-548cf8f6df-4nnnr              2/2     Running     0          47m
-infra-operator-controller-manager-7c9fb555b6-sfzhp                2/2     Running     0          46m
-ironic-operator-controller-manager-54964b9f7d-zpw6r               2/2     Running     0          48m
-keystone-operator-controller-manager-5f645bfbdc-wjmcn             2/2     Running     0          47m
-manila-operator-controller-manager-6cf575bc8d-68cd4               2/2     Running     0          47m
-mariadb-operator-controller-manager-7b9776b9db-52jfk              2/2     Running     0          46m
-neutron-operator-controller-manager-5864f597f4-7lrbp              2/2     Running     0          48m
-nova-operator-controller-manager-7fd8665f59-j8kks                 2/2     Running     0          48m
-octavia-operator-controller-manager-7c9589cbc8-xwctr              2/2     Running     0          47m
-openstack-ansibleee-operator-controller-manager-6bc6dcd69-hccz5   2/2     Running     0          47m
-openstack-baremetal-operator-controller-manager-746dd88d6bkxwxh   2/2     Running     0          46m
-openstack-operator-controller-manager-bd994f976-dgswt             2/2     Running     0          46m
-openstack-operator-index-df4z5                                    1/1     Running     0          49m
-ovn-operator-controller-manager-7fdb6dc56c-wj8m6                  2/2     Running     0          46m
-placement-operator-controller-manager-8bff6b56b-h2twl             2/2     Running     0          48m
-rabbitmq-cluster-operator-668d7786c5-6xm98                        1/1     Running     0          47m
-swift-operator-controller-manager-7c7b9f7b78-f8nkf                2/2     Running     0          47m
-telemetry-operator-controller-manager-5b996c956c-676xg            2/2     Running     0          47m
+NAME                                                              READY   STATUS    RESTARTS   AGE
+barbican-operator-controller-manager-7cb5df8b9b-mqxmx             2/2     Running   0          110s
+cinder-operator-controller-manager-59f9c8cf97-f929f               2/2     Running   0          68s
+designate-operator-controller-manager-6d89ccd959-t7blw            2/2     Running   0          102s
+glance-operator-controller-manager-7bbfcf9c56-lv54c               2/2     Running   0          58s
+heat-operator-controller-manager-5c7646c989-b6ntp                 2/2     Running   0          91s
+horizon-operator-controller-manager-7784f8bcff-g2xbj              2/2     Running   0          2m31s
+infra-operator-controller-manager-666fc544fb-tqbrf                2/2     Running   0          113s
+ironic-operator-controller-manager-6d7b68dbd-g55s2                2/2     Running   0          43s
+keystone-operator-controller-manager-745565f898-2qjnq             2/2     Running   0          58s
+manila-operator-controller-manager-6bd5895b5b-r2zwn               2/2     Running   0          74s
+mariadb-operator-controller-manager-6947755d96-d2crb              2/2     Running   0          2m16s
+neutron-operator-controller-manager-7dbdc7c9f6-c2mq9              2/2     Running   0          2m27s
+nova-operator-controller-manager-7d55cc4d88-tfjn4                 2/2     Running   0          72s
+octavia-operator-controller-manager-54748ddf69-5m8nl              2/2     Running   0          2m32s
+openstack-ansibleee-operator-controller-manager-fbb45f87b-rwrpq   2/2     Running   0          2m23s
+openstack-baremetal-operator-controller-manager-68bc9c44f-l9n24   2/2     Running   0          2m8s
+openstack-operator-controller-manager-7b74cd65df-h7tnj            2/2     Running   0          43s
+ovn-operator-controller-manager-67695db68b-q6qwc                  2/2     Running   0          82s
+placement-operator-controller-manager-5c8f6599d7-nqd6s            2/2     Running   0          94s
+rabbitmq-cluster-operator-7d6b597db7-khtb6                        1/1     Running   0          106s
+swift-operator-controller-manager-7f66c7b854-l5tpm                2/2     Running   0          56s
+telemetry-operator-controller-manager-564ff5ccdf-bfn9h            2/2     Running   0          2m9s
 (...)
 ----
 

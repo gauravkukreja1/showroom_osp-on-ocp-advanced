@@ -21,7 +21,6 @@ data:
   username: <base64 encoded subscription-manager username>
   password: <base64 encoded subscription-manager password>
 EOF
-[source,bash,role=execute]
 ----
 
 
