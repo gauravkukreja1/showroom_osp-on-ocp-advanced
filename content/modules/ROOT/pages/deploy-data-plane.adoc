@@ -17,6 +17,7 @@ apiVersion: v1
 kind: Secret
 metadata:
   name: subscription-manager
+  namespace: openstack
 data:
   username: <base64 encoded subscription-manager username>
   password: <base64 encoded subscription-manager password>
