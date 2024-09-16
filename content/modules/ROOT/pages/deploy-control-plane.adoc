@@ -205,18 +205,12 @@ oc get pods -n openstack
 ----
 [root@ocp4-bastion ~]# oc get pods -n openstack
 NAME                                                              READY   STATUS      RESTARTS        AGE
-bootstrap-openstack-edpm-ipam-openstack-edpm-ipam-wmbv4           0/1     Completed   0               4h8m
 ceilometer-0                                                      4/4     Running     0               4h11m
 cinder-api-0                                                      2/2     Running     0               4h14m
 cinder-scheduler-0                                                2/2     Running     0               4h14m
 cinder-volume-nfs-0                                               2/2     Running     0               4h14m
-configure-network-openstack-edpm-ipam-openstack-edpm-ipam-n9jxj   0/1     Completed   0               4h3m
-configure-os-openstack-edpm-ipam-openstack-edpm-ipam-dgkp4        0/1     Completed   0               4h1m
 dnsmasq-dns-785476d85c-q87x5                                      1/1     Running     0               4h8m
-download-cache-openstack-edpm-ipam-openstack-edpm-ipam-6v9fm      0/1     Completed   0               4h5m
 glance-default-single-0                                           3/3     Running     0               4h14m
-install-certs-openstack-edpm-ipam-openstack-edpm-ipam-nqmmb       0/1     Completed   0               4h
-install-os-openstack-edpm-ipam-openstack-edpm-ipam-bl6c5          0/1     Completed   0               4h1m
 keystone-759744994c-ztqr7                                         1/1     Running     0               4h14m
 keystone-cron-28684081-8fvbq                                      0/1     Completed   0               155m
 keystone-cron-28684141-bnrr4                                      0/1     Completed   0               95m
@@ -224,13 +218,11 @@ keystone-cron-28684201-7lpx2                                      0/1     Comple
 libvirt-openstack-edpm-ipam-openstack-edpm-ipam-wlgbl             0/1     Completed   0               3h58m
 memcached-0                                                       1/1     Running     0               4h15m
 neutron-b594879db-r8l9k                                           2/2     Running     0               4h14m
-neutron-metadata-openstack-edpm-ipam-openstack-edpm-ipam-hvp68    0/1     Completed   0               3h59m
 nova-api-0                                                        2/2     Running     0               4h12m
 nova-cell0-conductor-0                                            1/1     Running     0               4h13m
 nova-cell1-conductor-0                                            1/1     Running     0               4h12m
 nova-cell1-novncproxy-0                                           1/1     Running     0               4h12m
 nova-metadata-0                                                   2/2     Running     0               4h12m
-nova-openstack-edpm-ipam-openstack-edpm-ipam-8fjht                0/1     Completed   0               3h56m
 nova-scheduler-0                                                  1/1     Running     0               4h12m
 openstack-cell1-galera-0                                          1/1     Running     0               4h15m
 openstack-galera-0                                                1/1     Running     0               4h15m
@@ -242,14 +234,9 @@ ovn-controller-ovs-qvbxj                                          2/2     Runnin
 ovn-controller-ovs-t27w4                                          2/2     Running     0               4h15m
 ovn-controller-ovs-vgz2q                                          2/2     Running     0               4h15m
 ovn-northd-7cfb5878d7-cxn8b                                       1/1     Running     0               4h15m
-ovn-openstack-edpm-ipam-openstack-edpm-ipam-qbflh                 0/1     Completed   0               3h59m
 ovsdbserver-nb-0                                                  1/1     Running     0               4h15m
 ovsdbserver-sb-0                                                  1/1     Running     0               4h15m
 placement-867d4646d7-vmk78                                        2/2     Running     0               4h14m
 rabbitmq-cell1-server-0                                           1/1     Running     0               4h15m
 rabbitmq-server-0                                                 1/1     Running     0               4h15m
-reboot-os-openstack-edpm-ipam-openstack-edpm-ipam-sckwj           0/1     Completed   0               4h
-run-os-openstack-edpm-ipam-openstack-edpm-ipam-55d2f              0/1     Completed   0               4h
-ssh-known-hosts-openstack-edpm-ipam-tss9r                         0/1     Completed   0               4h
-validate-network-openstack-edpm-ipam-openstack-edpm-ipam-mgpn5    0/1     Completed   0               4h1m
 ----
