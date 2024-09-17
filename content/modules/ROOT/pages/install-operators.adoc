@@ -13,7 +13,7 @@ The basic architecture of a Red Hat OpenStack Services on OpenShift (RHOSO) envi
 * **Ansible-managed RHEL-hosted service**: RHOSO workloads run on RHEL nodes that are managed by a dedicated DataPlane Operator. The DataPlane Operator runs Ansible jobs to configure the RHEL data plane nodes, such as the Compute nodes. RHOCP manages provisioning, DNS, and configuration management.
 * **Installer-provisioned infrastructure**: The RHOSO installer enables installer-provisioned infrastructure that uses RHOSO bare-metal machine management to provision the Compute nodes for the RHOSO cloud.
 * **User-provisioned infrastructure**: If you have your own machine ingest and provisioning workflow, you can use the RHOSO pre-provisioned model to add your pre-provisioned hardware into your RHOSO environment, while receiving the benefits of a container-native workflow.
-+ **Hosted RHOSO client**: RHOSO provides a host openstackclient pod that is preconfigured with administrator access to the deployed RHOSO environment.
+* **Hosted RHOSO client**: RHOSO provides a host openstackclient pod that is preconfigured with administrator access to the deployed RHOSO environment.
 
 
 Create an argocd application manifest to deploy the prerequisites for the RHOSO control plane installation:
