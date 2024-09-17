@@ -16,6 +16,8 @@ cd /home/cloud-admin
 openstack compute service list
 ----
 
+[source,bash]
+----
 .Sample Output
 +--------------------------------------+----------------+-----------------------------------------+----------+---------+-------+----------------------------+
 | ID                                   | Binary         | Host                                    | Zone     | Status  | State | Updated At                 |
@@ -25,6 +27,7 @@ openstack compute service list
 | d39b02a5-c879-46b3-83a5-2c6c906aaba8 | nova-conductor | nova-cell1-conductor-0                  | internal | enabled | up    | 2024-08-27T07:45:46.000000 |
 | d2590690-0403-4eb7-b82b-dbdd5c8a8783 | nova-compute   | edpm-compute-0.ctlplane.aio.example.com | nova     | enabled | up    | 2024-08-27T07:45:47.000000 |
 +--------------------------------------+----------------+-----------------------------------------+----------+---------+-------+----------------------------+
+----
 
 Verify OpenStack networks:
 
