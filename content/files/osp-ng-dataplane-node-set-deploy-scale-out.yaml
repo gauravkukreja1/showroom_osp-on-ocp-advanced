@@ -23,7 +23,6 @@ spec:
     - libvirt
     - nova
     - telemetry
-  preProvisioned: true
   networkAttachments:
   - ctlplane
   baremetalSetTemplate: 
