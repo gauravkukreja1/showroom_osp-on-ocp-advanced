@@ -85,7 +85,7 @@ oc label BareMetalHost osp-compute1 -n openshift-machine-api app=openstack
 
 Deploy the Dataplane
 
-Replace uuid in osp-ng-dataplane-node-set-deploy-scale-out.yaml and edit the edpm_bootstrap_command with your subscription-manager credentials. Finally apply:
+Finally apply:
 [source,bash,role=execute]
 ----
 oc apply -f osp-ng-dataplane-node-set-deploy-scale-out.yaml
