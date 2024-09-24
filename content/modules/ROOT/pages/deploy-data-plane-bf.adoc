@@ -112,7 +112,7 @@ oc logs openstack-operator-controller-manager-cfcf84546-4cbwb -n openstack-opera
 ----
 Fix it using the official documentation: https://docs.redhat.com/en/documentation/red_hat_openstack_services_on_openshift/18.0/html/deploying_red_hat_openstack_services_on_openshift/assembly_creating-the-data-plane
 
-Commit and push the changes to your github repo
+Git commit your changes in your repo and push the changes into your repo. Sync the application in the ArgoCD UI.
 
 Access the OpenShift Gitops console to check the deployment of the RHOSO operators
 

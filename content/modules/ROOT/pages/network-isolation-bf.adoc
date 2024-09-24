@@ -184,7 +184,7 @@ In the bastion change directories to your forked repo:
 cd /root/labrepo
 ----
 
-Git commit your changes in your repo and push the changes into your repo.
+Git commit your changes in your repo and push the changes into your repo. Sync the application in the ArgoCD UI.
 
 Execute $YOUR_REPO_URL/content/modules/files/check-nncp.sh osp-enp1s0-worker-ocp4-worker3 to check if the exercise has been completed succesfully. 
 
@@ -266,10 +266,13 @@ Events:  <none>
 *Exercise*:
 
 *tenant* network is missing, modify the file $YOUR_REPO_URL/content/modules/files/manifests/network-configuration/osp-ng-netattach.yaml to add the following network:
+
 * Name: tenant
 * IP ranges: 172.19.0.30 - 172.19.0.70
+* range: 172.19.0.0/24
+* master: enp1s0.22
 
-Git commit your changes in your repo and push the changes into your repo.
+Git commit your changes in your repo and push the changes into your repo. Sync the application in the ArgoCD UI.
 
 Execute $YOUR_REPO_URL/content/modules/files/check-nad.sh to check if the exercise has been completed succesfully.
 
@@ -308,11 +311,12 @@ tenant        ["tenant"]                                  ["enp1s0.22"]
 *Exercise*:
 
 *internalIP* metalLB IP address range and L2advertissemtns configuration are missing. Modify the files modify the file $YOUR_REPO_URL/content/modules/files/manifests/network-configuration/osp-ng-netattach.yaml to add the following network and modify the file $YOUR_REPO_URL/content/modules/files/manifests/network-configuration/osp-ng-netattach.yaml to add the following network based on the table of the beginning of the chapter:
+
 * Name: internalapi
 * IP ranges: 172.17.0.80 - 172.17.0.90
 * interface: enp1s0.21
 
-Git commit your changes in your repo and push the changes into your repo.
+Git commit your changes in your repo and push the changes into your repo. Sync the application in the ArgoCD UI.
 
 Exceute $YOUR_REPO_URL/content/modules/files/check-metallb.sh to check if the exercise has been completed succesfully. 
 
