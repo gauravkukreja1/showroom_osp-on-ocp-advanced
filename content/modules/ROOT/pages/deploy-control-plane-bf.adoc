@@ -152,7 +152,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: $YOUR_REPO_URL
+    repoURL: '$YOUR_REPO_URL'
     targetRevision: HEAD
     path: content/files/manifests/openstack-control-plane-deployment
   destination:
