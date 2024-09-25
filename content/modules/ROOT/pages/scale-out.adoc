@@ -40,14 +40,21 @@ The new host should be visible:
 
 Back on the **bastion** server:
 
-. Clone the Files Repo
-+
+Clone the Files Repo
+
 In the bastion terminal, clone the repo and change directory to the files that we will used later in the lab
-+
+
 [source,bash,role=execute]
 ----
 git clone https://github.com/pnavarro/showroom_osp-on-ocp-advanced.git labrepo
 cd labrepo/content/files
+----
+
+The BMO manages BareMetalHost CRs in the openshift-machine-api namespace by default. You must update the Provisioning CR to watch all namespaces:
+
+[source,bash,role=execute]
+----
+oc patch provisioning provisioning-configuration --type merge -p '{"spec":{"watchAllNamespaces": true }}'
 ----
 
 Create a Baremetal Host to prepare
